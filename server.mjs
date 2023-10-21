@@ -1,9 +1,9 @@
-const express = require("express");
-const cors = require("cors");
-
+import express from "express";
+import cors from "cors";
+import "./loadEnv.mjs";
 const app = express();
 
-var corsOptions = {
+const corsOptions = {
   origin: "http://localhost:8081",
 };
 
@@ -15,12 +15,12 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-const db = require("./models");
-const { USERNAME, PASSWORD } = require("./config/db.config");
+import db from "./models/index.js";
+
 
 db.mongoose
   .connect(
-    `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.nre7ku7.mongodb.net/?retryWrites=true&w=majority`,
+    process.env.DB_URL,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -39,7 +39,8 @@ app.get("/", (req, res) => {
 });
 
 // routes
-require("./routes/auth.routes")(app);
+import routes from "./routes/auth.routes.js";
+routes(app)
 
 // set port, listen for requests
 const serverPort = process.env.PORT || 8080;

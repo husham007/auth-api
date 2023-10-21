@@ -1,35 +1,34 @@
-const config = require("../config/auth.config");
 const db = require("../models");
 const User = db.user;
 
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
-exports.signup = (req, res) => {
-  console.log("hello signUp");
+exports.signup = async (req, res) => {
   const user = new User({
     username: req.body.username,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8),
   });
 
-  user.save((err, user) => {
-    if (err) {
-      res.status(500).send({ message: err });
-      return;
-    }
-    res.send({ message: "User was registered successfully!" });
-  });
+  try {
+    const savedUser = await user.save();
+    if (savedUser)
+      res.send({
+        message: "User was registered successfully!",
+      });
+    else res.send({ message: "User not registered!" });
+  } catch (e) {
+    console.log(e);
+    res.status(500).send({ message: e.message });
+  }
 };
 
-exports.signin = (req, res) => {
-  User.findOne({
-    username: req.body.username,
-  }).exec((err, user) => {
-    if (err) {
-      res.status(500).send({ message: err });
-      return;
-    }
+exports.signin = async (req, res) => {
+  try {
+    const user = await User.findOne({
+      username: req.body.username,
+    });
 
     if (!user) {
       return res.status(404).send({ message: "User Not found." });
@@ -47,7 +46,7 @@ exports.signin = (req, res) => {
       });
     }
 
-    const token = jwt.sign({ id: user.id }, config.secret, {
+    const token = jwt.sign({ id: user.id }, process.env.SECRET, {
       algorithm: "HS256",
       allowInsecureKeySizes: true,
       expiresIn: 86400, // 24 hours
@@ -59,5 +58,8 @@ exports.signin = (req, res) => {
       email: user.email,
       accessToken: token,
     });
-  });
+  } catch (e) {
+    console.log(e);
+    res.status(500).send({ message: e.message });
+  }
 };
