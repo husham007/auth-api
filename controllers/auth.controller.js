@@ -16,6 +16,7 @@ exports.signup = async (req, res) => {
     if (savedUser)
       res.send({
         message: "User was registered successfully!",
+        user: user.username,
       });
     else res.send({ message: "User not registered!" });
   } catch (e) {
@@ -27,7 +28,7 @@ exports.signup = async (req, res) => {
 exports.signin = async (req, res) => {
   try {
     const user = await User.findOne({
-      username: req.body.username,
+      email: req.body.email,
     });
 
     if (!user) {
