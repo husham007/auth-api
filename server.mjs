@@ -3,8 +3,12 @@ import cors from "cors";
 import "./loadEnv.mjs";
 const app = express();
 
+// const corsOptions = {
+//   origin: "http://localhost:8081",
+// };
+
 const corsOptions = {
-  origin: "http://localhost:8081",
+  origin: ["http://localhost:8081", "https://mellow-jalebi-f2ae3c.netlify.app"],
 };
 
 app.use(cors(corsOptions));
@@ -17,15 +21,11 @@ app.use(express.urlencoded({ extended: true }));
 
 import db from "./models/index.js";
 
-
 db.mongoose
-  .connect(
-    process.env.DB_URL,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    },
-  )
+  .connect(process.env.DB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("Successfully connect to MongoDB.");
   })
@@ -40,7 +40,7 @@ app.get("/", (req, res) => {
 
 // routes
 import routes from "./routes/auth.routes.js";
-routes(app)
+routes(app);
 
 // set port, listen for requests
 const serverPort = process.env.PORT || 8080;
