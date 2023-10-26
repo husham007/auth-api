@@ -20,12 +20,16 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
+if (process.env.NODE_ENV === "test") {
+  const testingRouter = require("./routes/testingRoutes");
+  app.use("/api/auth/testing", testingRouter);
+}
+
 // simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Auth server application." });
 });
 
-// import routes from "./routes/auth.routes.js";
 routes(app);
 
 module.exports = app;
