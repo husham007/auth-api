@@ -8,6 +8,7 @@ const app = express();
 //   origin: "http://localhost:8081",
 // };
 
+app.use(express.static("dist"));
 const corsOptions = {
   // origin: [
   //   "http://localhost:8081",
