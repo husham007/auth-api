@@ -9,7 +9,12 @@ const app = express();
 // };
 
 const corsOptions = {
-  origin: ["http://localhost:8081", "https://mellow-jalebi-f2ae3c.netlify.app"],
+  // origin: [
+  //   "http://localhost:8081",
+  //   "https://personal-weather-station.netlify.app/",
+  // ],
+
+  origin: "*",
 };
 
 app.use(cors(corsOptions));
@@ -20,15 +25,15 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-if (process.env.NODE_ENV === "test") {
-  const testingRouter = require("./routes/testingRoutes");
-  app.use("/api/auth/testing", testingRouter);
-}
-
 // simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Auth server application." });
 });
+
+// if (process.env.NODE_ENV === "test") {
+//   const testingRouter = require("./routes/testingRoutes");
+//   app.use("/api/auth/testing", testingRouter);
+// }
 
 routes(app);
 
