@@ -26,6 +26,7 @@ exports.signup = async (req, res) => {
 };
 
 exports.signin = async (req, res) => {
+  // console.log(req.body);
   try {
     const user = await User.findOne({
       email: req.body.email,
@@ -37,7 +38,7 @@ exports.signin = async (req, res) => {
 
     const passwordIsValid = bcrypt.compareSync(
       req.body.password,
-      user.password,
+      user.password
     );
 
     if (!passwordIsValid) {
@@ -47,17 +48,21 @@ exports.signin = async (req, res) => {
       });
     }
 
-    const token = jwt.sign({ id: user.id }, process.env.SECRET, {
-      algorithm: "HS256",
-      allowInsecureKeySizes: true,
-      expiresIn: 86400, // 24 hours
-    });
+    const token = jwt.sign(
+      { id: user.id, username: user.username, email: user.email },
+      process.env.SECRET,
+      {
+        algorithm: "HS256",
+        allowInsecureKeySizes: true,
+        expiresIn: 86400, // 24 hours
+      }
+    );
 
     res.status(200).send({
       id: user._id,
       username: user.username,
       email: user.email,
-      accessToken: token,
+      token: token,
     });
   } catch (e) {
     console.log(e);
