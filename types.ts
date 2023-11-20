@@ -3,3 +3,7 @@ export interface UserInterface {
   email: string;
   password: string;
 }
+
+export interface CustomRequest extends Request {
+  user?: any;
+}
