@@ -10,9 +10,10 @@ export const verifyToken = async (
   try {
     const JWT_SECRET = process.env.SECRET || "";
     const token = req.cookies.access_token;
+
     if (token) {
       const payload = jwt.verify(token, JWT_SECRET);
-      console.log(payload);
+
       (req as any).user = payload;
       next();
     } else {
@@ -20,6 +21,7 @@ export const verifyToken = async (
     }
   } catch (error: unknown) {
     let errorMessage = "Something went wrong";
+
     if (error instanceof Error) {
       errorMessage += error.message;
     }

@@ -1,9 +1,12 @@
+import express, { Request } from "express";
+import jwt from "jsonwebtoken";
+
 export interface UserInterface {
-  userName: string;
+  username: string;
   email: string;
   password: string;
 }
 
 export interface CustomRequest extends Request {
-  user?: any;
+  user: string | jwt.JwtPayload;
 }
