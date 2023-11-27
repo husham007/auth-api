@@ -7,7 +7,6 @@ import jwt from "jsonwebtoken";
 export const signUp = async (req: express.Request, res: express.Response) => {
   try {
     const { username, email, password } = req.body as UserInterface;
-
     const alreadyUser = await User.findOne({ email });
 
     if (!alreadyUser) {
