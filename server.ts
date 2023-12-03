@@ -10,8 +10,8 @@ const app = express();
 app.use(express.static("build"));
 const corsOptions = {
   // origin: "http://localhost:8081",
-  // origin: "https://personal-weather-station.netlify.app/",
-  origin: "*",
+  origin: "https://personal-weather-station.netlify.app",
+  // origin: "*",
   credentials: true,
 };
 
