@@ -1,4 +1,4 @@
-import express, { Request } from "express";
+import { Request } from "express";
 import jwt from "jsonwebtoken";
 
 export interface UserInterface {
