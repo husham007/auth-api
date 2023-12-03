@@ -33,9 +33,11 @@ const config_1 = __importDefault(require("./utils/config"));
 Promise.resolve().then(() => __importStar(require("./mongoDB")));
 const userRoute_1 = __importDefault(require("./routes/userRoute"));
 const app = (0, express_1.default)();
+app.use(express_1.default.static("build"));
 const corsOptions = {
     // origin: "http://localhost:8081",
-    origin: "*",
+    origin: "https://personal-weather-station.netlify.app/",
+    // origin: "*",
     credentials: true,
 };
 app.use(express_1.default.json());
