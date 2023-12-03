@@ -36,3 +36,4 @@ const verifyToken = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
     }
 });
 exports.verifyToken = verifyToken;
+//# sourceMappingURL=verifyToken.js.map

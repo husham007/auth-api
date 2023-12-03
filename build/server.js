@@ -35,9 +35,10 @@ const userRoute_1 = __importDefault(require("./routes/userRoute"));
 const app = (0, express_1.default)();
 // app.use(express.static("build"));
 const corsOptions = {
-    // origin: "http://localhost:8081",
-    origin: "https://personal-weather-station.netlify.app",
-    // origin: "*",
+    origin: [
+        "http://localhost:8081",
+        "https://personal-weather-station.netlify.app",
+    ],
     credentials: true,
 };
 app.use(express_1.default.json());
@@ -50,3 +51,4 @@ app.use("/api/auth", userRoute_1.default);
 app.listen(config_1.default.PORT, () => {
     console.log(`Server is running on http://localhost:${config_1.default.PORT}`);
 });
+//# sourceMappingURL=server.js.map

@@ -115,3 +115,4 @@ const getProfile = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.getProfile = getProfile;
+//# sourceMappingURL=userController.js.map

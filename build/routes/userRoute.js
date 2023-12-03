@@ -12,3 +12,4 @@ userRouter.post("/signin", userController_1.login);
 userRouter.post("/logout", verifyToken_1.verifyToken, userController_1.logout);
 userRouter.get("/profile", verifyToken_1.verifyToken, userController_1.getProfile);
 exports.default = userRouter;
+//# sourceMappingURL=userRoute.js.map

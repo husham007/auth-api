@@ -14,3 +14,4 @@ mongoose_1.default
     console.error("Connection error", err);
     process.exit();
 });
+//# sourceMappingURL=mongoDB.js.map
