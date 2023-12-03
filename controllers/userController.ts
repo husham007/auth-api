@@ -62,7 +62,6 @@ export const login = async (req: express.Request, res: express.Response) => {
             // httpOnly: true,
           })
           .json(payload);
-        console.log(token);
       } else {
         res.status(400).json({ error: "Invalid Password" });
       }
