@@ -14,7 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.verifyToken = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-// import { UserInterface2 } from "../types";
 const verifyToken = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const JWT_SECRET = process.env.SECRET || "";

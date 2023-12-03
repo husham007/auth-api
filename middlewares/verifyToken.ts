@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
-import express, { Request, Response, NextFunction } from "express";
-// import { UserInterface2 } from "../types";
+import express, { NextFunction } from "express";
+
 
 export const verifyToken = async (
   req: express.Request,
