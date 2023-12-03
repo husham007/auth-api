@@ -7,7 +7,7 @@ import userRouter from "./routes/userRoute";
 
 const app = express();
 
-app.use(express.static("build"));
+// app.use(express.static("build"));
 const corsOptions = {
   // origin: "http://localhost:8081",
   origin: "https://personal-weather-station.netlify.app",
