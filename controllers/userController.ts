@@ -60,6 +60,7 @@ export const login = async (req: express.Request, res: express.Response) => {
           .cookie("access_token", token, {
             maxAge: 3600000,
             httpOnly: true,
+            domain: "https://personal-weather-station.netlify.app",
           })
           .json(payload);
       } else {
