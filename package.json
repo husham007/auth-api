@@ -6,7 +6,6 @@
   "scripts": {
     "tsc": "tsc",
     "start": "node build/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev server.ts",
     "build": "tsc",
     "start:test": "set NODE_ENV=test && ts-node-dev server.ts"
