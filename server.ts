@@ -7,9 +7,10 @@ import userRouter from "./routes/userRoute";
 
 const app = express();
 
+app.use(express.static("dist"));
 const corsOptions = {
-  // origin: "http://localhost:8081",
-  origin: "*",
+  origin: "http://localhost:8081",
+  // origin: "*",
   credentials: true,
 };
 
