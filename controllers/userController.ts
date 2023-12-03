@@ -60,9 +60,9 @@ export const login = async (req: express.Request, res: express.Response) => {
           .cookie("access_token", token, {
             maxAge: 3600000,
             // httpOnly: true,
-           
           })
           .json(payload);
+        console.log(token);
       } else {
         res.status(400).json({ error: "Invalid Password" });
       }
