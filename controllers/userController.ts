@@ -60,6 +60,7 @@ export const login = async (req: express.Request, res: express.Response) => {
           .cookie("access_token", token, {
             maxAge: 100000 * 2000,
             httpOnly: true,
+            sameSite: "none",
           })
           .json(payload);
       } else {
