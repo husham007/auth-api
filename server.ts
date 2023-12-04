@@ -15,6 +15,7 @@ const corsOptions = {
   // ],
   origin: "https://personal-weather-station.netlify.app",
   credentials: true,
+  
 };
 
 app.use(express.json());
