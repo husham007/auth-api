@@ -56,17 +56,11 @@ export const login = async (req: express.Request, res: express.Response) => {
         const token = jwt.sign(payload, JWT_SECRET, {
           expiresIn: "80000000s",
         });
-        res.cookie("access_token", token, {
-          maxAge: 100000 * 2000,
-          // httpOnly: true,
-
-          httpOnly: true,
-          sameSite: "none",
-          secure: true,
-          domain: "https://personal-weather-station.netlify.app/",
-          expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
-        });
-        // .json(payload);
+        res
+          .cookie("access_token", token, {
+            maxAge: 100000 * 2000,
+          })
+          .json(payload);
       } else {
         res.status(400).json({ error: "Invalid Password" });
       }
