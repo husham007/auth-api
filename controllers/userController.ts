@@ -54,11 +54,11 @@ export const login = async (req: express.Request, res: express.Response) => {
 
         const JWT_SECRET = process.env.SECRET || "";
         const token = jwt.sign(payload, JWT_SECRET, {
-          expiresIn: "800000s",
+          expiresIn: "80000000s",
         });
         res
           .cookie("access_token", token, {
-            maxAge: 1000 * 2000,
+            maxAge: 100000 * 2000,
             // httpOnly: true,
           })
           .json(payload);
