@@ -64,7 +64,9 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 res.cookie("access_token", token, {
                     maxAge: 100000 * 2000,
                     // httpOnly: true,
+                    httpOnly: true,
                     sameSite: "none",
+                    secure: true,
                     domain: "https://personal-weather-station.netlify.app/",
                     expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
                 });
