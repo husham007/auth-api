@@ -35,11 +35,11 @@ const userRoute_1 = __importDefault(require("./routes/userRoute"));
 const app = (0, express_1.default)();
 app.use(express_1.default.static("build"));
 const corsOptions = {
-    // origin: [
-    //   "http://localhost:8081",
-    //   "https://personal-weather-station.netlify.app",
-    // ],
-    origin: "https://personal-weather-station.netlify.app",
+    origin: [
+        "http://localhost:8081",
+        "https://personal-weather-station.netlify.app",
+    ],
+    // origin: "https://personal-weather-station.netlify.app",
     credentials: true,
 };
 app.use(express_1.default.json());
