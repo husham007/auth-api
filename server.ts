@@ -12,6 +12,7 @@ const corsOptions = {
   origin: [
     "http://localhost:8081",
     "https://personal-weather-station.netlify.app",
+    "https://personal-weather-station-d6ka.onrender.com"
   ],
   // origin: "https://personal-weather-station.netlify.app",
 
