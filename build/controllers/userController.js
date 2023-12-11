@@ -67,7 +67,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                     httpOnly: true,
                     sameSite: "none",
                     secure: true,
-                    domain: "https://personal-weather-station.netlify.app/",
+                    domain: "https://personal-weather-station.netlify.app",
                     expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
                 });
                 // .json(payload);

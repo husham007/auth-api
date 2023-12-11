@@ -63,7 +63,7 @@ export const login = async (req: express.Request, res: express.Response) => {
           httpOnly: true,
           sameSite: "none",
           secure: true,
-          domain: "https://personal-weather-station.netlify.app/",
+          domain: "https://personal-weather-station.netlify.app",
           expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
         });
         // .json(payload);
