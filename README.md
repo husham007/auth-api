@@ -25,15 +25,17 @@ To integrate the backend with the frontend, make sure to configure the frontend 
    ```bash
    git clone https://github.com/husham007/auth-api.git
 
-2. Clone the repository:
+2. Navigate to the project directory:
+
+   ```bash
+   cd auth-api
+
+   ```
+   
+3. Install dependencies: Run "npm install" in the project directory
 
    ```bash
    npm install
-
-3. Ensure that you have TypeScript and other required development dependencies installed:
-
-   ```bash
-   npm install --save-dev typescript ts-node-dev @types/bcrypt @types/cors @types/jsonwebtoken @types/mongoose
 
 4. Build the TypeScript code:
 
